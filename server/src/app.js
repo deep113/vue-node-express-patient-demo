@@ -20,5 +20,9 @@ app.get('/status', (req, res) => {
         message: 'Hello World!'
     });
 });
-
+app.post('/login', (req, res) => {
+    res.send({
+        message: `Hello ${req.body.username}  and your password is ${req.body.password} `
+    });
+});
 app.listen(process.env.PORT || 8081);
