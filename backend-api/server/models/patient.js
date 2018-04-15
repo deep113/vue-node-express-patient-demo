@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var patient = sequelize.define('patient', {
+  var Patient = sequelize.define('patient', {
     name: DataTypes.STRING,
     lname: DataTypes.STRING,
     mname: DataTypes.STRING,
@@ -29,9 +29,21 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       field: 'updated_at'
     }
-  }, {});
-  patient.associate = function(models) {
+  },  {
+    hooks: {
+      beforeCreate: (patient) => {
+        const salt = bcrypt.genSaltSync();
+        patient.password = bcrypt.hashSync(patient.password, salt);
+      }
+    },
+    instanceMethods: {
+      validPassword: function(password) {
+        return bcrypt.compareSync(password, this.password);
+      }
+    }    
+});
+Patient.associate = function(models) {
     // associations can be defined here
   };
-  return patient;
+  return Patient;
 };

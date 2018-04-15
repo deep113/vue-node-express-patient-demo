@@ -1,5 +1,5 @@
-const patients = require('./patient');
+const Patient = require('./patient');
 
 module.exports = {
-    patients,
+    Patient,
 };
