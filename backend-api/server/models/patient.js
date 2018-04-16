@@ -1,5 +1,6 @@
 'use strict';
 var bcrypt = require('bcrypt');
+const discrete_attribute = require('../models/').discrete_attribute;
 module.exports = (sequelize, DataTypes) => {
   var Patient = sequelize.define('patient', {
     name: DataTypes.STRING,

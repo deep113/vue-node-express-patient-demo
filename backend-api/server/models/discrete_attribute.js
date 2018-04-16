@@ -1,13 +1,21 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var discrete_attribute = sequelize.define('discrete_attribute', {
+  var Discrete_Attribute = sequelize.define('discrete_attribute', {
     attribute_name: DataTypes.STRING,
     attribute_value: DataTypes.STRING,
     created_by: DataTypes.INTEGER,
-    modified_by: DataTypes.INTEGER
+    modified_by: DataTypes.INTEGER,
+    createdAt: {
+      type: DataTypes.DATE,
+      field: 'created_at',
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      field: 'updated_at'
+    }
   }, {});
-  discrete_attribute.associate = function(models) {
+  Discrete_Attribute.associate = function(models) {
     // associations can be defined here
   };
-  return discrete_attribute;
+  return Discrete_Attribute;
 };
