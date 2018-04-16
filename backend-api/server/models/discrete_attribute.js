@@ -1,7 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var discrete_attribute = sequelize.define('discrete_attribute', {
-    patient_id: DataTypes.INTEGER,
     attribute_name: DataTypes.STRING,
     attribute_value: DataTypes.STRING,
     created_by: DataTypes.INTEGER,

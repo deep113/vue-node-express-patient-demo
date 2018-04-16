@@ -8,10 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      patient_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
       attribute_name: {
         allowNull: false,
         type: Sequelize.STRING

@@ -1,4 +1,5 @@
 'use strict';
+var bcrypt = require('bcrypt');
 module.exports = (sequelize, DataTypes) => {
   var Patient = sequelize.define('patient', {
     name: DataTypes.STRING,
@@ -18,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     phone: DataTypes.STRING,
     fax: DataTypes.STRING,
     user_name: DataTypes.STRING,
+    password: DataTypes.STRING,
     photo: DataTypes.BLOB,
     created_by: DataTypes.INTEGER,
     modified_by: DataTypes.INTEGER,
@@ -34,6 +36,11 @@ module.exports = (sequelize, DataTypes) => {
       beforeCreate: (patient) => {
         const salt = bcrypt.genSaltSync();
         patient.password = bcrypt.hashSync(patient.password, salt);
+        patient.gender = 1;
+        patient.marital_status = 2;
+        patient.city = 3;
+        patient.state = 4;
+        patient.country = 5;
       }
     },
     instanceMethods: {
